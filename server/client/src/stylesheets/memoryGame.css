@@ -1,0 +1,29 @@
+.keypad{
+    position: fixed;
+    bottom: 40px;
+    right: 50%;
+    transform: translateX(50%);
+    width: 212px;
+}
+.keypad button:nth-child(1),.keypad button:nth-child(4){
+    display: flex;
+    margin: auto;
+}
+
+.keypad>button{
+    border-radius: 100%;
+    aspect-ratio: 1;
+    margin: 5px 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+@media (hover: none){
+    .keypad>button:hover, .keypad>button:active, .keypad>button:focus{background-color: transparent; color: #6c757d;}
+}
+#symbols-display{
+    display: flex;
+    gap: 10px;
+} #symbols-display svg{
+    font-size: 32px;
+}
