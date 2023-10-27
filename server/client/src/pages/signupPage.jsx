@@ -32,7 +32,7 @@ async function handleSubmit(e){
   fetch('https://bioclock.onrender.com/api/auth/register', {
       method: "POST",
       headers: {"Content-Type": 'application/json'},
-      body: JSON.stringify(data),
+      body: JSON.stringify({...data, username: data.username.trim().toLowerCase()}),
       credentials: 'include'
   }).then(res => {
       if(!res.ok){

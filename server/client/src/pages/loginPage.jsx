@@ -20,7 +20,7 @@ export default function LoginPage (){
           method: "POST",
           headers: {"Content-Type": 'application/json'},
           credentials: "include",
-          body: JSON.stringify(data)
+          body: JSON.stringify({...data, username: data.username.trim().toLowerCase()})
       }).then(res => {
         if(!res.ok && res.status === 401){
           setLoading(false)
