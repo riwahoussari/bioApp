@@ -1,7 +1,7 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useUser } from "../hooks/useUser";
 import '../stylesheets/form.css'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function FormCard({question, answers, scores, number}) {
     return (
@@ -40,12 +40,10 @@ export default function MEQForm() {
     const [display, setDisplay] = useState()
     let navigate = useNavigate()
     let userInfo = useUser()
-    if(userInfo.auth === false){
-        setDisplay(false)
-    }else if(userInfo.user && userInfo.user.formScore === '0'){
-        setDisplay('form')
-    } else {
-        setDisplay('thanks')
+    console.log(userInfo)
+    if(userInfo.auth === true ){
+        if(userInfo.user.formScore === '0'){setDisplay('form')}
+        else{setDisplay('thanks')}
     }
 
     // const QandAs = [
@@ -197,6 +195,23 @@ export default function MEQForm() {
         </header>
 
         <div className='d-flex flex-column  align-items-center pt-8 bg-body-tertiary' style={{minHeight: "100vh"}}>
+            {error && 
+                <div id='popup'>
+                <p style={{margin: '0', padding: '10px 20px'}}>{error}</p>
+                <button className='btn btn-close p-3' onClick={()=>setError(false)} />
+                </div>
+            }
+            {loading && 
+                <div id='popup' className='loadingPopup'>
+                <p style={{margin: '0', padding: '10px 20px'}}>{loading}</p>
+                </div>
+            }
+            {success && 
+                <div id='popup' className='successPopup'>
+                <p style={{margin: '0', padding: '10px 20px'}}>Result uploaded successfully!</p>
+                <button className='btn btn-close p-3' onClick={()=>setSuccess(false)} />
+                </div>
+            }
 
             <h2>MEQ Questionnaire</h2>
             {display === 'form' &&
