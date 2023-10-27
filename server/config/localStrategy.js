@@ -18,8 +18,7 @@ passport.deserializeUser(async (user, done) => {
 const localRegister = (req, res)=>{
     console.log('Register request received')
     let {username, password, age, gender} = req.body;
-    username = username.trim();
-    username.toLowerCase()
+    username = username.trim().toLowerCase();
     console.log(username)
     const usernamePattern = /^[A-Za-z0-9 ]+$/
     if(!usernamePattern.test(username)){
@@ -54,8 +53,7 @@ const localRegister = (req, res)=>{
 
 const localLogin = (req, res)=>{
     console.log('Login req received')
-    const username = req.body.username.trim()
-    username.toLowerCase()
+    const username = req.body.username.trim().toLowerCase()
     console.log(username)
     User.findOne({username}).then(user => {
         if(!user){
