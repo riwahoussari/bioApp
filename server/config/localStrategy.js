@@ -34,7 +34,8 @@ const localRegister = (req, res)=>{
                     res.json({success: false, message: err.message})
                 }
                 else{
-                    passport.authenticate('user')(req, res, ()=>{
+                    passport.authenticate('user')(req, res, (err)=>{
+                        if(err){console.log(err)}
                         console.log('Register request: new user created successfully')
                         res.json({
                             success: true,
