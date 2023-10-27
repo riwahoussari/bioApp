@@ -22,6 +22,7 @@ export default function HomePage(){
         setLoading(false)
         if(res.loggedOut){
           sessionStorage.setItem('userInfo', JSON.stringify({auth: false}))
+          userInfo = {auth: false}
         }else{
           throw Error("Sorry! we couldn't log you out")
         }
