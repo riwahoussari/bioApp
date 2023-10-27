@@ -15,6 +15,7 @@ async function handleSubmit(e){
   formData.forEach((value, key)=>{
     data[key] = value;
   })
+
   if(data.password !== data.password2){
     setError('Passwords must match');
     return
@@ -103,7 +104,7 @@ async function handleSubmit(e){
       <div className="col-md-6 mb-2 px-1">
 
         <div className="form-floating">
-          <input name="password" type="password" id="firstName" className="form-control form-control-lg" placeholder='Create Password' required/>
+          <input name="password" type="password" id="firstName" className="form-control form-control-lg" placeholder='Create Password' minLength='6' required/>
           <label htmlFor="firstName">Create Password</label>
         </div>
 
