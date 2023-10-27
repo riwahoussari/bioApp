@@ -27,7 +27,7 @@ export default function LoginPage (){
           throw Error("username or password is incorrect")
         }else if(!res.ok){
           setLoading(false)
-          throw Error("Server response no ok. Please try again")
+          throw Error("Server response not ok. Please try again")
         }
           return res.json()
       }).then(res => {

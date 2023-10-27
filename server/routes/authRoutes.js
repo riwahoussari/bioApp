@@ -1,4 +1,3 @@
-
 import bodyParser from 'body-parser';
 import Local from '../config/localStrategy.js';
 import {Router as expressRouter} from 'express'
@@ -22,7 +21,7 @@ authRouter.post('/user', (req, res)=>{
 })
 
 // logout
-authRouter.get('/logout', (req, res)=>{
+authRouter.post('/logout', (req, res)=>{
     req.logout(err => {
         if (err) { res.json({loggedOut: false}) }
         else{res.json({loggedOut: true})}
