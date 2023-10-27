@@ -26,12 +26,12 @@ authRouter.post('/logout', (req, res)=>{
     req.logout(err => {
         if (err) {
             console.log('logout failed: ' + err)
-            res.json({loggedOut: false}) }
-        else{
+            res.json({loggedOut: false}) 
+        }else{
             console.log('lougout successfull')
             res.json({loggedOut: true})
         }
-      });
+    });
 })
 
 export default authRouter

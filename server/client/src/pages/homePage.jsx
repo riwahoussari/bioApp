@@ -9,7 +9,6 @@ export default function HomePage(){
   navigate(`.${path}`, {replace: true})
 
   function logout() {
-    setLoading(true)
     fetch('https://bioclock.onrender.com/api/auth/logout', {
       method: "POST",
       credentials: "include"
