@@ -188,24 +188,24 @@ export default function MEQForm() {
             </div>
         </header>
 
+        {error && 
+            <div id='popup'>
+            <p style={{margin: '0', padding: '10px 20px'}}>{error}</p>
+            <button className='btn btn-close p-3' onClick={()=>setError(false)} />
+            </div>
+        }
+        {loading && 
+            <div id='popup' className='loadingPopup'>
+            <p style={{margin: '0', padding: '10px 20px'}}>{loading}</p>
+            </div>
+        }
+        {success && 
+            <div id='popup' className='successPopup'>
+            <p style={{margin: '0', padding: '10px 20px'}}>Result uploaded successfully!</p>
+            <button className='btn btn-close p-3' onClick={()=>setSuccess(false)} />
+            </div>
+        }
         <div className='d-flex flex-column  align-items-center pt-8 bg-body-tertiary' style={{minHeight: "100vh"}}>
-            {error && 
-                <div id='popup'>
-                <p style={{margin: '0', padding: '10px 20px'}}>{error}</p>
-                <button className='btn btn-close p-3' onClick={()=>setError(false)} />
-                </div>
-            }
-            {loading && 
-                <div id='popup' className='loadingPopup'>
-                <p style={{margin: '0', padding: '10px 20px'}}>{loading}</p>
-                </div>
-            }
-            {success && 
-                <div id='popup' className='successPopup'>
-                <p style={{margin: '0', padding: '10px 20px'}}>Result uploaded successfully!</p>
-                <button className='btn btn-close p-3' onClick={()=>setSuccess(false)} />
-                </div>
-            }
 
             <h2>MEQ Questionnaire</h2>
             {userInfo.auth === true && userInfo.user.formScore === '0' &&

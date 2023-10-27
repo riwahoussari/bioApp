@@ -53,8 +53,8 @@ function getDate(){
 }
 
 //upload form result
-apiRouter.post('/fromResult', bodyParser.json(), (req, res)=>{
-    console.log('/fromResult req received')
+apiRouter.post('/formResult', bodyParser.json(), (req, res)=>{
+    console.log('/formResult req received')
     if(req.isAuthenticated()){
         let data = req.body.data;
         let score = req.body.score;
