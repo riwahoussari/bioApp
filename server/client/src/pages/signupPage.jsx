@@ -22,6 +22,7 @@ async function handleSubmit(e){
   const usernamePattern = /^[A-Za-z0-9 ]+$/;
   if(!usernamePattern.test(data.username)){
     setError("username can't contain special characters")
+    return
   }
   setLoading(true)
 

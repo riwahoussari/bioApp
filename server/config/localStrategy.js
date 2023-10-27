@@ -21,6 +21,7 @@ const localRegister = (req, res)=>{
     username = username.toLowerCase().trim();
     const usernamePattern = /^[A-Za-z0-9 ]+$/
     if(!usernamePattern.test(username)){
+        console.log('username cant contain special chars')
         res.json({success: false, message: "Username can't contain special characters"})
     } else {
     User.findOne({username}).then(user => {
@@ -51,10 +52,11 @@ const localRegister = (req, res)=>{
 const localLogin = (req, res)=>{
     console.log('Login req received')
     const username = req.body.username.toLowerCase().trim()
+    console.log(username)
     User.findOne({username}).then(user => {
         if(!user){
-            res.json({success: false, message: 'username or password is incorrect'})
             console.log('Login request: username is incorrect')
+            res.json({success: false, message: 'username or password is incorrect'})
         }else{
             const newUser = {
                 userType: 'user',
