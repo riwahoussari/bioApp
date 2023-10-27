@@ -9,6 +9,7 @@ export default function HomePage(){
   navigate(`.${path}`, {replace: true})
 
   function logout() {
+    setLoading(true)
     fetch('https://bioclock.onrender.com/api/auth/logout', {
       method: "POST",
       credentials: "include"
@@ -20,7 +21,7 @@ export default function HomePage(){
       return res.json()
     }).then(res => {
         setLoading(false)
-        if(res.loggedOUt){
+        if(res.loggedOut){
           sessionStorage.setItem('userInfo', JSON.stringify({auth: false}))
         }else{
           throw Error("Sorry! we couldn't log you out")
@@ -52,7 +53,7 @@ export default function HomePage(){
     {!userInfo.auth ? <div>  
       <Link to='./signup' className='btn btn-outline-light btn-sm'>Sign Up</Link>
       <Link to='./login' className='btn btn-light btn-sm ms-3'>Login</Link>
-    </div> : <button type='button' className='btn btn-outline-light' onClick={logout}>Log Out</button>}
+    </div> : <button type='button' className='btn btn-outline-light btn-sm' onClick={logout}>Log Out</button>}
 
     </div>
 </header>
