@@ -14,7 +14,7 @@ authRouter.post('/user', (req, res)=>{
     console.log('/user route req received');
     if(req.isAuthenticated()){
         console.log('user authenticated on route /user')
-        res.json({auth: true, user: req.user})
+        res.json({auth: true, user: {formScore: req.user.formScore}})
     }
     else{
         console.log('user not authenticated on route /user')

@@ -27,7 +27,7 @@ const localRegister = (req, res)=>{
         if(user){
             res.json({success: false, message: 'username already exists. Please try another one.'})
         }else{
-            User.register(new User({username, userType: 'user', age, gender}), password, (err,user)=>{
+            User.register(new User({username, userType: 'user', age, gender, formScore: '0'}), password, (err,user)=>{
                 if(err){
                     console.log(err);
                     res.json({success: false, message: err.message})
@@ -38,7 +38,7 @@ const localRegister = (req, res)=>{
                         console.log('Register request: new user created successfully')
                         res.json({
                             success: true,
-                            user: {_id: user._id, username: user.username, userType: user.userType, age: user.age, gender: user.gender}
+                            user: user.formScore
                         })
                     })
                 }
@@ -69,7 +69,7 @@ const localLogin = (req, res)=>{
                 }else{
                     passport.authenticate('user')(req, res, function(){
                         console.log('Login request: successfull')
-                        res.json({success: true, user})
+                        res.json({success: true, user: {formScore: user.formScore}})
                     })
                 }
             })

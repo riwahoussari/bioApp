@@ -12,7 +12,9 @@ const userSchema = new mongoose.Schema ({
     memoryGame: Array,
     mathGame: Array,
     redLightGreenLight: Array,
-    keypadGame: Array
+    keypadGame: Array,
+    formScore: String,
+    formData: Object
 })
 
 userSchema.plugin(passportLocalMongoose);

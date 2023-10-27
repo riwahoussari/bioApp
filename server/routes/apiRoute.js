@@ -52,6 +52,29 @@ function getDate(){
     return {date: formattedDate, time: formattedTime}
 }
 
+//upload form result
+apiRouter.post('/fromResult', bodyParser.json(), (req, res)=>{
+    console.log('/fromResult req received')
+    if(req.isAuthenticated()){
+        let data = req.body.data;
+        let score = req.body.score;
+
+        User.findOneAndUpdate({ _id: req.user._id },{$set: {
+            formScore: score, formData: data
+        }})
+        .then(()=>{
+            console.log('form results added successfully')
+            res.json({success: true})
+        }).catch(err => {
+            console.log('Error uploading form result: ', err);
+            res.json({success: false, message: "Couldn't upload your result. Please try again"})
+        });
+
+    }else{
+        console.log('user not authenticated on route /formResult')
+        res.json({success: false, message: 'user not authenticated. Please log in'})
+    }
+})
 //auth routes
 import authRouter from './authRoutes.js'
 apiRouter.use('/auth', authRouter)

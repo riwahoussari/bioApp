@@ -33,6 +33,19 @@ export default function HomePage(){
     <div className="col">
         <div className="card shadow-sm">
           <div className="card-body">
+            <h4>MEQ Questionnaire</h4>
+            <p className="card-text">Answer each question.</p>
+            <div className="d-flex justify-content-between align-items-center">
+              <div>
+                <Link to={'../MEQForm'}><button type="button" className="btn btn-sm btn-primary">Fill Form</button></Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="col">
+        <div className="card shadow-sm">
+          <div className="card-body">
             <h4>Red light green light</h4>
             <p className="card-text">Tap the box as soon as it turn green.</p>
             <div className="d-flex justify-content-between align-items-center">

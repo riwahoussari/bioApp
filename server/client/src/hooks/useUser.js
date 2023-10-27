@@ -9,8 +9,8 @@ export function useUser(){
 
     useEffect(()=>{
         if(!('userInfo' in sessionStorage)){
-            // fetch(`http://localhost:2500/api/auth/user`, {method: 'POST', credentials: 'include'})
-            fetch(`https://bioclock.onrender.com/api/auth/user`, {method: 'POST', credentials: "include"})
+            fetch(`http://localhost:2500/api/auth/user`, {method: 'POST', credentials: 'include'})
+            // fetch(`https://bioclock.onrender.com/api/auth/user`, {method: 'POST', credentials: "include"})
             .then(res=>{
                     if(!res.ok){
                         throw Error('could not check user authentication')

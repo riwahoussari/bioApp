@@ -48,7 +48,7 @@ async function handleSubmit(e){
       }else{
         throw Error(res.message)
       }
-  }).catch(err => setError(err.message))
+  }).catch(err => {setLoading(false);setError(err.message)})
 }
   return (<>
   {error && 

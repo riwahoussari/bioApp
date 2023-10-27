@@ -283,6 +283,7 @@ export default function MathGame(){
                 throw Error(res.message)
             }
         }).catch(err => {
+            setLoading(false)
             setError(err.message)
             startButton.current.style.display = 'unset'
             startButton.current.textContent = 'Restart Game'

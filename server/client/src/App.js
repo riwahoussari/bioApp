@@ -6,6 +6,7 @@ import  RedLightGreenLight from './games/RedLightGreenLight'
 import  KeypadGame from './games/KeypadGame'
 import  MemoryGame from './games/MemoryGame'
 import MathGame from './games/MathGame'
+import MEQForm from './games/MEQForm'
 import Page404 from './pages/404'
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -15,6 +16,7 @@ const router = createBrowserRouter(
       <Route path='login' element={<LoginPage/>}></Route>
       <Route path='signup' element={<SignupPage/>}></Route>
 
+      <Route path='MEQForm' element={<MEQForm/>}></Route>
 
       <Route path='RedLightGreenLight' element={<RedLightGreenLight/>}></Route>
       <Route path='KeypadGame' element={<KeypadGame/>}></Route>

@@ -38,7 +38,7 @@ export default function LoginPage (){
           }else{
             throw Error(res.message)
           }
-      }).catch(err => setError(err.message))
+      }).catch(err => {setLoading(false);setError(err.message)})
   }
   return (<>
   {error && 
