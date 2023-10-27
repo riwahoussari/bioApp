@@ -19,17 +19,16 @@ export default function HomePage(){
       }
       return res.json()
     }).then(res => {
-        setLoading(false)
-        if(res.loggedOut){
-          sessionStorage.setItem('userInfo', JSON.stringify({auth: false}))
-          userInfo = {auth: false}
-        }else{
-          throw Error("Sorry! we couldn't log you out")
-        }
+      if(res.loggedOut){
+        sessionStorage.setItem('userInfo', JSON.stringify({auth: false}))
+      }else{
+        throw Error("Sorry! we couldn't log you out")
+      }
+      setLoading(false)
     }).catch(err => {setLoading(false);setError(err.message)})
   }
   
-  let userInfo = useUser();
+  const userInfo = useUser()
   return (<>
   {error && 
     <div id='popup'>
