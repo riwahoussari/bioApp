@@ -11,7 +11,7 @@ const __dirname = path.dirname(__filename)
 //setup session and passport
 app.use(session({
     secret: process.env.SESSION_SECRET,
-    saveUninitialized: true,
+    saveUninitialized: false,
     resave: false,
     cookie: {
         maxAge: 24 * 60 * 60 * 1000,

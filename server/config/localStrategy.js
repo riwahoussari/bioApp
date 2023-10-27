@@ -17,8 +17,12 @@ passport.deserializeUser(async (user, done) => {
 
 const localRegister = (req, res)=>{
     console.log('Register request received')
-    const {username, password, age, gender} = req.body;
-
+    let {username, password, age, gender} = req.body;
+    username = username.toLowerCase().trim();
+    const usernamePattern = /^[A-Za-z0-9 ]+$/
+    if(!usernamePattern.test(username)){
+        res.json({success: false, message: "Username can't contain special characters"})
+    } else {
     User.findOne({username}).then(user => {
         if(user){
             res.json({success: false, message: 'username already exists. Please try another one.'})
@@ -41,18 +45,20 @@ const localRegister = (req, res)=>{
         }
     })
 }
+}
 
 
 const localLogin = (req, res)=>{
     console.log('Login req received')
-    User.findOne({username: req.body.username}).then(user => {
+    const username = req.body.username.toLowerCase().trim()
+    User.findOne({username}).then(user => {
         if(!user){
             res.json({success: false, message: 'username or password is incorrect'})
             console.log('Login request: username is incorrect')
         }else{
             const newUser = {
                 userType: 'user',
-                username: req.body.username,
+                username,
                 password: req.body.password
             }
             req.login(newUser, function(err){
@@ -68,7 +74,6 @@ const localLogin = (req, res)=>{
             })
         }
     })
-
 }
 
 const Local = {localRegister, localLogin}

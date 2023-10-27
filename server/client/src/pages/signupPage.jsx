@@ -19,6 +19,10 @@ async function handleSubmit(e){
     setError('Passwords must match');
     return
   }
+  const usernamePattern = /^[A-Za-z0-9 ]+$/;
+  if(!usernamePattern.test(data.username)){
+    setError("username can't contain special characters")
+  }
   setLoading(true)
 
   // fetch('http://localhost:2500/api/auth/register', {
@@ -86,7 +90,7 @@ async function handleSubmit(e){
         <div className="col-md-6 mb-2 px-1 d-flex align-items-center">
 
           <div className="form-floating datepicker w-100">
-            <input name='age' type="number" min={'12'} max={'70'} className="form-control form-control-lg" id="birthdayDate" placeholder='Birthday' required/>
+            <input name='age' type="number" min={'12'} max={'64'} className="form-control form-control-lg" id="birthdayDate" placeholder='Birthday' required/>
             <label htmlFor="birthdayDate">Age</label>
           </div>
 
