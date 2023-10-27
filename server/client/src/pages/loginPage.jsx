@@ -15,8 +15,8 @@ export default function LoginPage (){
     formData.forEach((value, key)=>{
       data[key] = value;
     })
-    // fetch('https://bioclock.onrender.com/auth/login', {
-        fetch('http://localhost:2500/api/auth/login', {
+    // fetch('http://localhost:2500/api/auth/login', {
+    fetch('https://bioclock.onrender.com/api/auth/login', {
           method: "POST",
           headers: {"Content-Type": 'application/json'},
           credentials: "include",

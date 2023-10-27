@@ -21,8 +21,8 @@ async function handleSubmit(e){
   }
   setLoading(true)
 
-  // fetch('https://bioclock.onrender.com/auth/register', {
-  fetch('http://localhost:2500/api/auth/register', {
+  // fetch('http://localhost:2500/api/auth/register', {
+  fetch('https://bioclock.onrender.com/api/auth/register', {
       method: "POST",
       headers: {"Content-Type": 'application/json'},
       body: JSON.stringify(data),
