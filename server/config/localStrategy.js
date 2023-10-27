@@ -38,7 +38,7 @@ const localRegister = (req, res)=>{
                         console.log('Register request: new user created successfully')
                         res.json({
                             success: true,
-                            user: user.formScore
+                            user: {formScore: user.formScore}
                         })
                     })
                 }

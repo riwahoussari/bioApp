@@ -211,11 +211,11 @@ export default function MEQForm() {
             {userInfo.auth === true && userInfo.user.formScore === '0' &&
                 <form onSubmit={e=>handleSubmit(e)}>
                     {QandAs.map(({question, answers, scores}, i) => <FormCard question={question} answers={answers} scores={scores} number={i+1} />)}
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn btn-primary btn-lg" style={{display: 'block', width: '100%', margin: '20px 0'}}>Submit</button>
                 </form>
             }
-            {userInfo.auth === true && userInfo.user.formScore !== '0'&& <>
-                <h3>Thank you for your submission!</h3>
+            {userInfo.auth === true && userInfo.user.formScore !== '0' && <>
+                <h4 style={{marginTop: '60px', marginBottom: '25px'}}>Thank you for your submission!</h4>
                 <Link to='../' className="btn btn-primary">Back Home</Link>
             </>}
 
