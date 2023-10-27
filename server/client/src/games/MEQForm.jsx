@@ -182,7 +182,7 @@ export default function MEQForm() {
             <div className="navbar navbar-dark bg-dark shadow-sm" style={{position: 'fixed', zIndex: '100', top: '0', width: '100%', height: '60px', justifyContent: 'center'}}>
                 <div >
                 <Link to="../" className="navbar-brand d-flex align-items-center m-0">
-                    <strong>App Name</strong>
+                    <strong>Biological Clock</strong>
                 </Link>
                 </div>
             </div>
@@ -214,7 +214,7 @@ export default function MEQForm() {
                     <button type="submit" className="btn btn-primary btn-lg" style={{display: 'block', width: '100%', margin: '20px 0'}}>Submit</button>
                 </form>
             }
-            {userInfo.auth === true && userInfo.user.formScore !== '0' && <>
+            {((userInfo.auth === true && userInfo.user.formScore !== '0') || success) && <>
                 <h4 style={{marginTop: '60px', marginBottom: '25px'}}>Thank you for your submission!</h4>
                 <Link to='../' className="btn btn-primary">Back Home</Link>
             </>}
