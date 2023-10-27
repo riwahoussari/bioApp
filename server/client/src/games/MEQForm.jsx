@@ -40,7 +40,9 @@ export default function MEQForm() {
     const [display, setDisplay] = useState()
     let navigate = useNavigate()
     let userInfo = useUser()
-    if(userInfo.user.formScore === '0'){
+    if(userInfo.auth === false){
+        setDisplay(false)
+    }else if(userInfo.user.formScore === '0'){
         setDisplay('form')
     } else {
         setDisplay('thanks')
