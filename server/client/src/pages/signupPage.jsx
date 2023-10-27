@@ -21,6 +21,7 @@ async function handleSubmit(e){
   }
   const usernamePattern = /^[A-Za-z0-9 ]+$/;
   if(!usernamePattern.test(data.username)){
+    console.log('pattern mismatch caught')
     setError("username can't contain special characters")
     return
   }
@@ -83,7 +84,7 @@ async function handleSubmit(e){
         <div className="col-md-6 mb-2 px-1">
 
           <div className="form-floating">
-            <input name='username' type="text" id="username" className="form-control form-control-lg" placeholder='Username'required/>
+            <input name='username' type="text" id="username" className="form-control form-control-lg" placeholder='Username' minLength='6' required/>
             <label htmlFor="username">Username</label>
           </div>
 
