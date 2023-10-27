@@ -37,14 +37,7 @@ export default function MEQForm() {
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(false)
     const [success, setSuccess] = useState(false)
-    const [display, setDisplay] = useState()
     let navigate = useNavigate()
-    let userInfo = useUser()
-    console.log(userInfo)
-    if(userInfo.auth === true ){
-        if(userInfo.user.formScore === '0'){setDisplay('form')}
-        else{setDisplay('thanks')}
-    }
 
     // const QandAs = [
     //     {
@@ -182,6 +175,7 @@ export default function MEQForm() {
         
     }
 
+    let userInfo = useUser()
     return (<>
         {userInfo.auth === false && navigate('../login', {replace: true})}
         <header data-bs-theme="dark">
@@ -214,13 +208,13 @@ export default function MEQForm() {
             }
 
             <h2>MEQ Questionnaire</h2>
-            {display === 'form' &&
+            {userInfo.auth === true && userInfo.user.formScore === '0' &&
                 <form onSubmit={e=>handleSubmit(e)}>
                     {QandAs.map(({question, answers, scores}, i) => <FormCard question={question} answers={answers} scores={scores} number={i+1} />)}
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
             }
-            {display === 'thanks' && <>
+            {userInfo.auth === true && userInfo.user.formScore !== '0'&& <>
                 <h3>Thank you for your submission!</h3>
                 <Link to='../' className="btn btn-primary">Back Home</Link>
             </>}
