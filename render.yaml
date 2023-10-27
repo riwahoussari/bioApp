@@ -1,9 +1,0 @@
-services:
-  - name: server
-    type: web
-    buildCommand: npm install
-    startCommand: node server/index.js
-
-  - name: client
-    type: build
-    buildCommand: npm install --prefix client && npm run build --prefix client
