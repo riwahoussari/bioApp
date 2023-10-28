@@ -1,7 +1,7 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useUser } from "../hooks/useUser";
 import '../stylesheets/form.css'
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function FormCard({question, answers, scores, number}) {
     return (
@@ -58,7 +58,7 @@ export default function MEQForm() {
             scores: [1,2,3,4]
         },{
             question: 'How alert do you feel during the first half hour after having woken up in the morning?',
-            answers: ['Not alert', 'Slighty alert', 'Fairly alert', 'Very aler'],
+            answers: ['Not alert', 'Slighty alert', 'Fairly alert', 'Very alert'],
             scores: [1,2,3,4]
         },{
             question: 'How is your appetite during the first half hour after having woken in the morning?',
@@ -101,7 +101,7 @@ export default function MEQForm() {
             answers: ['8:00 AM __10:00 AM', '11:00 AM __1:00PM', '3:00 PM __5:00 PM', '7:00 PM __9:00 PM'],
             scores: [4,3,2,1]
         },{
-            question: 'Yo have decided to engage in hard physical work. A friend suggests to workout at 10:00 _11:00 PM. How well do you think you would perform',
+            question: 'You have decided to engage in hard physical work. A friend suggests to workout at 10:00 _11:00 PM. How well do you think you would perform',
             answers: ['Would be on good form', 'Would be on reasonable form', 'Would find it difficult', 'Would find it very difficult'],
             scores: [1,2,3,4]
         },{

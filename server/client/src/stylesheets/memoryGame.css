@@ -19,7 +19,11 @@
     justify-content: center;
 }
 @media (hover: none){
-    .keypad>button:hover, .keypad>button:active, .keypad>button:focus{background-color: transparent; color: #6c757d;}
+    .keypad>button:hover, .keypad>button:focus-visible{
+        background-color: transparent;
+        color: #6c757d;
+        box-shadow: none;
+    }
 }
 #symbols-display{
     display: flex;
