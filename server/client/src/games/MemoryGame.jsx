@@ -38,12 +38,12 @@ const MemoryGame = () => {
     setError(false);
     setSuccess(false);
     startButton.current.style.display = 'none';
-    bigLevelDisplay.current.textContent = ''
+    bigLevelDisplay.current.textContent = '';
+    levelDisplay.current.textContent = `level: ${level}`
     generateSequence();
   }
 
   const generateSequence = () => {
-    levelDisplay.current.textContent = `level: ${level}`
     instructions.current.textContent = 'Memorize this sequence'
 
     let displayTime;
@@ -89,6 +89,7 @@ const MemoryGame = () => {
     if (sequence[index] === number) {
       setUserSequence([...userSequence, number]);
       if (userSequence.length === sequence.length - 1) {
+        levelDisplay.current.textContent = `level: ${level+1}`
         setLevel(prev=>prev+1)
         setUserSequence([])
         setSequence([]);

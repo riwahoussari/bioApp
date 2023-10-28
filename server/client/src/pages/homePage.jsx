@@ -31,13 +31,13 @@ export default function HomePage(){
 
     <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
     <div className="col">
-        <div className="card shadow-sm">
+        <div className="card shadow-sm bg-secondary" style={{color: 'white'}}>
           <div className="card-body">
             <h4>MEQ Questionnaire</h4>
             <p className="card-text">Answer each question.</p>
             <div className="d-flex justify-content-between align-items-center">
               <div>
-                <Link to={'../MEQForm'}><button type="button" className="btn btn-sm btn-primary">Fill Form</button></Link>
+                <Link to={'../MEQForm'}><button type="button" className="btn btn-sm btn-light">Fill Form</button></Link>
               </div>
             </div>
           </div>
@@ -50,7 +50,7 @@ export default function HomePage(){
             <p className="card-text">Tap the box as soon as it turn green.</p>
             <div className="d-flex justify-content-between align-items-center">
               <div>
-                <Link to={'../RedLightGreenLight'}><button type="button" className="btn btn-sm btn-primary">Play Game</button></Link>
+                <Link to={'../RedLightGreenLight'}><button type="button" className="btn btn-sm btn-dark">Play Game</button></Link>
               </div>
             </div>
           </div>
@@ -63,7 +63,7 @@ export default function HomePage(){
             <p className="card-text">Wait for a word to appear then click the corresponding number asap.</p>
             <div className="d-flex justify-content-between align-items-center">
               <div>
-                <Link to='../KeypadGame'><button type="button" className="btn btn-sm btn-primary">Play Game</button></Link>
+                <Link to='../KeypadGame'><button type="button" className="btn btn-sm btn-dark">Play Game</button></Link>
               </div>
             </div>
           </div>
@@ -76,7 +76,7 @@ export default function HomePage(){
             <p className="card-text">Complete the simple math equation.</p>
             <div className="d-flex justify-content-between align-items-center">
               <div>
-                <Link to='../MathGame'><button type="button" className="btn btn-sm btn-primary">Play Game</button></Link>
+                <Link to='../MathGame'><button type="button" className="btn btn-sm btn-dark">Play Game</button></Link>
               </div>
             </div>
           </div>
@@ -89,7 +89,7 @@ export default function HomePage(){
             <p className="card-text">Memorize the sequence of symbols then try to click it in order after it's dissapeared. </p>
             <div className="d-flex justify-content-between align-items-center">
               <div>
-                <Link to='../MemoryGame'><button type="button" className="btn btn-sm btn-primary">Play Game</button></Link>
+                <Link to='../MemoryGame'><button type="button" className="btn btn-sm btn-dark">Play Game</button></Link>
               </div>
             </div>
           </div>
