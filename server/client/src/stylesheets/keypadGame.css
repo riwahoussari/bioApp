@@ -51,7 +51,7 @@ body {
     margin: 5px;
 }
 @media (hover: none) {
-    #keypad .btn:hover, #keypad .btn:focus-visible{
+    #keypad .btn:hover, #keypad .btn:focus-visible, #keypad .btn:active{
         background-color: transparent;
         color: #6c757d;
         box-shadow: none;
