@@ -20,10 +20,11 @@ export default function RedLightGreenLight(){
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
     const [success, setSuccess] = useState(false)
+    const color = useRef()
 
     const timeoutRef = useRef(null);
     useEffect(() => {
-        startMidText.current.textContent = 'Start Game'
+        startMidText.current.textContent = 'Start Game';
         return () => {
             if (timeoutRef.current) {
             clearTimeout(timeoutRef.current);
@@ -39,6 +40,8 @@ export default function RedLightGreenLight(){
             startButton.current.style.display = 'none';
             gameBox.current.style.display = 'flex';
             gameBox.current.style.backgroundColor = blue;
+            gameBox.current.classList.remove('whiteBg')
+            color.current = blue;
     
             //countdown then start game
             gameMidText.current.textContent = '3'
@@ -58,10 +61,11 @@ export default function RedLightGreenLight(){
 
     function gameBoxClick(){
         //if user clicked on time
-        if (gameBox.current.style.backgroundColor === green) {
+        if (color.current === green) {
             //change box color
             gameBox.current.style.backgroundColor = blue
-
+            gameBox.current.classList.remove('whiteBg')
+            color.current = blue
             
             //if game didn't end
             if (rounds > 0){
@@ -89,9 +93,11 @@ export default function RedLightGreenLight(){
             
             setCorrectClicks(prev=>prev + 1)
         } //if user clicked early
-        else if(gameBox.current.style.backgroundColor === red){
+        else if(color.current === red){
             //change box color and display text
             gameBox.current.style.backgroundColor = blue;
+            gameBox.current.classList.remove('whiteBg')
+            color.current = blue;
             gameTopText.current.textContent = 'too early';
             
             //if game didn't end
@@ -118,18 +124,20 @@ export default function RedLightGreenLight(){
         if (rounds > 0) {
             //display text
             gameTopText.current.textContent = '';
-            gameMidText.current.textContent = 'Wait...';
+            gameMidText.current.textContent = 'Click when you hear the sound.';
             //box is red
-            gameBox.current.style.backgroundColor = red;
+            gameBox.current.style.color = 'black';
+            gameBox.current.style.backgroundColor = 'white';
+            gameBox.current.classList.add('whiteBg')
+            color.current = red
     
             //after random time
             timeoutRef.current = setTimeout(() => {
                 //if user didn't click early
-                if(gameBox.current && gameBox.current.style.backgroundColor === red){
+                if(color.current === red){
                     //box is green
-                    gameBox.current.style.backgroundColor = green;
-                    gameMidText.current.textContent = 'Click!'
-    
+                    playSound()
+                    color.current = green;
                     //start counter
                     setStartTime(new Date().getTime())
                 }
@@ -169,8 +177,7 @@ export default function RedLightGreenLight(){
         setCorrectClicks(0);
 
         //upload results then show restart button
-        uploadResult(result)
-        // startMidText.current.textContent = 'Restart Game';
+        // uploadResult(result)
     }
 
     function uploadResult(result) {
@@ -180,7 +187,7 @@ export default function RedLightGreenLight(){
         fetch('https://bioclock.onrender.com/api/gameResult', {
             method: "POST",
             headers: {"Content-Type": 'application/json'},
-            body: JSON.stringify({result, game: 'red light green light'}),
+            body: JSON.stringify({result, game: 'sound game'}),
             credentials: 'include'
         }).then(res => {
             if(!res.ok){
@@ -203,7 +210,10 @@ export default function RedLightGreenLight(){
             startMidText.current.textContent = 'Restart Game'
         })
     }
-
+    function playSound(){
+        let sound = document.getElementById('audio')
+        sound.play()    
+    }
 
     let userInfo = useUser()
     let navigate = useNavigate();
@@ -239,7 +249,7 @@ export default function RedLightGreenLight(){
         </div>
     }
        
-        <h2>Green Light Red Light</h2>
+        <h2>Sound Game</h2>
         <div className='container'>
 
             <div id="startButton" 

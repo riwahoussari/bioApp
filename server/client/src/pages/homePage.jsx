@@ -95,6 +95,19 @@ export default function HomePage(){
           </div>
         </div>
       </div>
+      <div className="col">
+        <div className="card shadow-sm">
+          <div className="card-body">
+            <h4>Sound Game</h4>
+            <p className="card-text">Tap the box as soon as you hear the beep sound.</p>
+            <div className="d-flex justify-content-between align-items-center">
+              <div>
+                <Link to='../SoundGame'><button type="button" className="btn btn-sm btn-dark">Play Game</button></Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 <p style={{
