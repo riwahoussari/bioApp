@@ -9,6 +9,7 @@ export default function HomePage(){
   const [loading, setLoading] = useState(false)
 
   function logout() {
+    console.log('log out')
     setLoading(true)
     setError(false)
 
@@ -41,7 +42,7 @@ export default function HomePage(){
       <strong>Biological Clock</strong>
     </Link>
       
-    {userInfo.auth === true ? <button className='btn btn-outline-light btn-sm' onClick={logout}>Log out</button> : <div>  
+    {userInfo.auth === true ? <button className='btn btn-outline-light btn-sm' onClick={()=>logout()}>Log out</button> : <div>  
       <Link to='./signup' className='btn btn-outline-light btn-sm'>Sign Up</Link>
       <Link to='./login' className='btn btn-light btn-sm ms-3'>Login</Link>
     </div> }
