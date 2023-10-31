@@ -19,6 +19,7 @@ apiRouter.post('/gameResult', bodyParser.json(), (req, res)=>{
         else if(game === 'keypad game'){update = {$push: {keypadGame: newResult}}}
         else if(game === 'memory game'){update = {$push: {memoryGame: newResult}}}
         else if(game === 'math game'){update = {$push: {mathGame: newResult}}}
+        else if(game === 'sound game'){update = {$push: {soundGame: newResult}}}
 
         User.findOneAndUpdate({ _id: req.user._id },update)
         .then(()=>{

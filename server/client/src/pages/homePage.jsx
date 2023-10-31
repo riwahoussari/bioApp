@@ -9,23 +9,25 @@ export default function HomePage(){
   const [loading, setLoading] = useState(false)
 
   function logout() {
+    setLoading(true)
+
     fetch('https://bioclock.onrender.com/api/auth/logout', {
-      method: "POST",
-      credentials: "include"
-  }).then(res => {
-    if(!res.ok){
-      setLoading(false)
-      throw Error("Server response not ok. Please try again")
-    }
-    return res.json()
-  }).then(res => {
-      setLoading(false)
-      if(res.success){
-        sessionStorage.setItem('userInfo', JSON.stringify({auth: false}))
-      }else{
-        throw Error(res.message)
+        method: "POST",
+        credentials: "include"
+    }).then(res => {
+      if(!res.ok){
+        setLoading(false)
+        throw Error("Server response not ok. Please try again")
       }
-  }).catch(err => {setLoading(false);setError(err.message)})
+      return res.json()
+    }).then(res => {
+        setLoading(false)
+        if(res.success){
+          sessionStorage.setItem('userInfo', JSON.stringify({auth: false}))
+        }else{
+          throw Error(res.message)
+        }
+    }).catch(err => {setLoading(false);setError(err.message)})
   }
   
   const userInfo = useUser()
@@ -42,7 +44,7 @@ export default function HomePage(){
       <p style={{margin: '0', padding: '10px 20px'}}>Logging in...</p>
     </div>
   }
-  
+
   <header className="navbar navbar-dark bg-dark shadow-md d-flex justify-content-center align-items-center" style={{position: 'fixed', zIndex: '100', top: '0', width: '100%', height: '60px'}}>
 
     <div className='d-flex justify-content-between align-items-center'id='headerContent'>

@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema ({
     mathGame: Array,
     redLightGreenLight: Array,
     keypadGame: Array,
+    soundGame: Array,
     formScore: String,
     formData: Object
 })
