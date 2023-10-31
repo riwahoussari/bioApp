@@ -177,7 +177,7 @@ export default function RedLightGreenLight(){
         setCorrectClicks(0);
 
         //upload results then show restart button
-        // uploadResult(result)
+        uploadResult(result)
     }
 
     function uploadResult(result) {

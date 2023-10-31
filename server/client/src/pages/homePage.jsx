@@ -33,20 +33,6 @@ export default function HomePage(){
   
   const userInfo = useUser()
   return (<>
-  
-  {error && 
-    <div id='popup'>
-      <p style={{margin: '0', padding: '10px 20px'}}>{error}</p>
-      <button className='btn btn-close p-3' onClick={()=>setError(null)} />
-    </div>
-  }
-  {loading ? console.log('loading') : console.log('not loading')}
-  {loading && 
-    <div id='popup' className='loadingPopup'>
-      <p style={{margin: '0', padding: '10px 20px'}}>Logging in...</p>
-    </div>
-  }
-
   <header className="navbar navbar-dark bg-dark shadow-md d-flex justify-content-center align-items-center" style={{position: 'fixed', zIndex: '100', top: '0', width: '100%', height: '60px'}}>
 
     <div className='d-flex justify-content-between align-items-center'id='headerContent'>
@@ -62,6 +48,20 @@ export default function HomePage(){
 
     </div>
 </header>
+
+{error && 
+  <div id='popup'>
+    <p style={{margin: '0', padding: '10px 20px'}}>{error}</p>
+    <button className='btn btn-close p-3' onClick={()=>setError(null)} />
+  </div>
+}
+{loading ? console.log('loading') : console.log('not loading')}
+{loading ? <>loading...</> : <>not loading</>}
+{loading && 
+  <div id='popup' className='loadingPopup'>
+    <p style={{margin: '0', padding: '10px 20px'}}>Logging in...</p>
+  </div>
+}
 
 <main>
 
