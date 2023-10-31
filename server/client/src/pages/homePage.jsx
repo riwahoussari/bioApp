@@ -1,12 +1,48 @@
 import { Link, useNavigate } from 'react-router-dom'
 import {useUser} from '../hooks/useUser'
+import { useState } from 'react'
 export default function HomePage(){
   const navigate = useNavigate()
   const path = new URL(window.location.href).pathname
   navigate(`.${path}`, {replace: true})
+  const [error, setError] = useState(false)
+  const [loading, setLoading] = useState(false)
+
+  function logout() {
+    fetch('https://bioclock.onrender.com/api/auth/logout', {
+      method: "POST",
+      credentials: "include"
+  }).then(res => {
+    if(!res.ok){
+      setLoading(false)
+      throw Error("Server response not ok. Please try again")
+    }
+    return res.json()
+  }).then(res => {
+      setLoading(false)
+      if(res.success){
+        sessionStorage.setItem('userInfo', JSON.stringify({auth: false}))
+      }else{
+        throw Error(res.message)
+      }
+  }).catch(err => {setLoading(false);setError(err.message)})
+  }
   
   const userInfo = useUser()
   return (<>
+  
+  {error && 
+    <div id='popup'>
+      <p style={{margin: '0', padding: '10px 20px'}}>{error}</p>
+      <button className='btn btn-close p-3' onClick={()=>setError(null)} />
+    </div>
+  }
+  {loading && 
+    <div id='popup' className='loadingPopup'>
+      <p style={{margin: '0', padding: '10px 20px'}}>Logging in...</p>
+    </div>
+  }
+  
   <header className="navbar navbar-dark bg-dark shadow-md d-flex justify-content-center align-items-center" style={{position: 'fixed', zIndex: '100', top: '0', width: '100%', height: '60px'}}>
 
     <div className='d-flex justify-content-between align-items-center'id='headerContent'>
@@ -15,10 +51,10 @@ export default function HomePage(){
       <strong>Biological Clock</strong>
     </Link>
       
-    {!userInfo.auth && <div>  
+    {userInfo.auth === true ? <button className='btn btn-outline-light btn-sm' onClick={logout}>Log out</button> : <div>  
       <Link to='./signup' className='btn btn-outline-light btn-sm'>Sign Up</Link>
       <Link to='./login' className='btn btn-light btn-sm ms-3'>Login</Link>
-    </div>}
+    </div> }
 
     </div>
 </header>
