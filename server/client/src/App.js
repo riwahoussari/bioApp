@@ -1,10 +1,11 @@
 import {createBrowserRouter, Route, createRoutesFromElements, RouterProvider} from 'react-router-dom'
 import LoginPage from './pages/loginPage'
 import SignupPage from './pages/signupPage'
+import LogoutPage from './pages/logoutPage'
 import HomePage from './pages/homePage'
-import  RedLightGreenLight from './games/RedLightGreenLight'
-import  KeypadGame from './games/KeypadGame'
-import  MemoryGame from './games/MemoryGame'
+import RedLightGreenLight from './games/RedLightGreenLight'
+import KeypadGame from './games/KeypadGame'
+import MemoryGame from './games/MemoryGame'
 import MathGame from './games/MathGame' 
 import SoundGame from './games/SoundGame' 
 import MEQForm from './games/MEQForm'
@@ -16,6 +17,7 @@ const router = createBrowserRouter(
 
       <Route path='login' element={<LoginPage/>}></Route>
       <Route path='signup' element={<SignupPage/>}></Route>
+      <Route path='logout' element={<LogoutPage/>}></Route>
 
       <Route path='MEQForm' element={<MEQForm/>}></Route>
 

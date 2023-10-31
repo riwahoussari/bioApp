@@ -7,32 +7,6 @@ export default function HomePage(){
   if(path){
     navigate(`.${path}`, {replace: true})
   }
-  const [error, setError] = useState(false)
-  const [loading, setLoading] = useState(false)
-
-  function logout() {
-    console.log('log out')
-    setLoading(true)
-    setError(false)
-
-    fetch('https://bioclock.onrender.com/api/auth/logout', {
-        method: "POST",
-        credentials: "include"
-    }).then(res => {
-      if(!res.ok){
-        setLoading(false)
-        throw Error("Server response not ok. Please try again")
-      }
-      return res.json()
-    }).then(res => {
-        setLoading(false)
-        if(res.success){
-          sessionStorage.setItem('userInfo', JSON.stringify({auth: false}))
-        }else{
-          throw Error(res.message)
-        }
-    }).catch(err => {setLoading(false);setError(err.message)})
-  }
   
   const userInfo = useUser()
   return (<>
@@ -44,27 +18,13 @@ export default function HomePage(){
       <strong>Biological Clock</strong>
     </Link>
       
-    {userInfo.auth === true ? <button className='btn btn-outline-light btn-sm' onClick={()=>logout()}>Log out</button> : <div>  
+    {userInfo.auth === true ? <Link to='./logout' className='btn btn-outline-light btn-sm'>Log out</Link> : <div>  
       <Link to='./signup' className='btn btn-outline-light btn-sm'>Sign Up</Link>
       <Link to='./login' className='btn btn-light btn-sm ms-3'>Login</Link>
     </div> }
 
     </div>
 </header>
-
-{error && 
-  <div id='popup'>
-    <p style={{margin: '0', padding: '10px 20px'}}>{error}</p>
-    <button className='btn btn-close p-3' onClick={()=>setError(null)} />
-  </div>
-}
-{loading ? console.log('loading') : console.log('not loading')}
-{loading ? <>loading...</> : <>not loading</>}
-{loading && 
-  <div id='popup' className='loadingPopup'>
-    <p style={{margin: '0', padding: '10px 20px'}}>Logging in...</p>
-  </div>
-}
 
 <main>
 
