@@ -10,6 +10,7 @@ export default function HomePage(){
 
   function logout() {
     setLoading(true)
+    setError(false)
 
     fetch('https://bioclock.onrender.com/api/auth/logout', {
         method: "POST",
@@ -39,6 +40,7 @@ export default function HomePage(){
       <button className='btn btn-close p-3' onClick={()=>setError(null)} />
     </div>
   }
+  {loading ? console.log('loading') : console.log('not loading')}
   {loading && 
     <div id='popup' className='loadingPopup'>
       <p style={{margin: '0', padding: '10px 20px'}}>Logging in...</p>
