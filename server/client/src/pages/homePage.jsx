@@ -4,6 +4,7 @@ import { useState } from 'react'
 export default function HomePage(){
   const navigate = useNavigate()
   const path = new URL(window.location.href).pathname
+  console.log(path)
   navigate(`.${path}`, {replace: true})
   const [error, setError] = useState(false)
   const [loading, setLoading] = useState(false)
