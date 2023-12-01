@@ -4,10 +4,10 @@ import SignupPage from './pages/signupPage'
 import LogoutPage from './pages/logoutPage'
 import HomePage from './pages/homePage'
 import RedLightGreenLight from './games/RedLightGreenLight'
-import KeypadGame from './games/KeypadGame'
-import MemoryGame from './games/MemoryGame'
-import MathGame from './games/MathGame' 
-import SoundGame from './games/SoundGame' 
+// import KeypadGame from './games/KeypadGame'
+// import MemoryGame from './games/MemoryGame'
+// import MathGame from './games/MathGame' 
+// import SoundGame from './games/SoundGame' 
 import MEQForm from './games/MEQForm'
 import Page404 from './pages/404'
 const router = createBrowserRouter(
@@ -22,10 +22,10 @@ const router = createBrowserRouter(
       <Route path='MEQForm' element={<MEQForm/>}></Route>
 
       <Route path='RedLightGreenLight' element={<RedLightGreenLight/>}></Route>
-      <Route path='KeypadGame' element={<KeypadGame/>}></Route>
+      {/* <Route path='KeypadGame' element={<KeypadGame/>}></Route>
       <Route path='MemoryGame' element={<MemoryGame/>}></Route>
       <Route path='MathGame' element={<MathGame/>}></Route>
-      <Route path='SoundGame' element={<SoundGame/>}></Route>
+      <Route path='SoundGame' element={<SoundGame/>}></Route> */}
 
       <Route path='*' element={<Page404/>}/>
     </Route>

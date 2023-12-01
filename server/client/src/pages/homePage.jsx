@@ -59,7 +59,7 @@ export default function HomePage(){
           </div>
         </div>
       </div>
-      <div className="col">
+      {/* <div className="col">
         <div className="card shadow-sm">
           <div className="card-body">
             <h4>Keypad Game</h4>
@@ -110,7 +110,7 @@ export default function HomePage(){
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   </div>
 <p style={{
