@@ -133,7 +133,7 @@ export default function RedLightGreenLight(){
                     //start counter
                     setStartTime(new Date().getTime())
                 }
-            }, Math.random() * 2000 + 1000); 
+            }, Math.random() * 4000 + 1000); 
     
             setRounds(prev=> prev - 1);
         }
